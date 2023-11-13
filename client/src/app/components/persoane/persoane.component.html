@@ -1,0 +1,88 @@
+<div>
+  <h2>Persoane</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Număr curent</th>
+        <th>Nume / Prenume</th>
+        <th>CNP</th>
+        <th>Vârsta</th>
+        <th>Lista mașinilor</th>
+        <th>Acțiuni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let persoana of persoane">
+        <td>{{ persoana.numarCurent }}</td>
+        <td>{{ persoana.numePrenume }}</td>
+        <td>{{ persoana.cnp }}</td>
+        <td>{{ persoana.varsta }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let masina of persoana.masini">
+              Marcă: {{ masina.denumireMarca }}, Model:
+              {{ masina.denumireModel }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button (click)="deschideModalModificare(persoana)">Modifică</button>
+          <button (click)="stergePersoana(persoana)">Șterge</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="deschideModalAdaugare()">Adaugă Persoană</button>
+
+  <div *ngIf="afiseazaModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">
+          Adaugă / Modifică Persoană
+        </h4>
+        <button type="button" class="close" (click)="inchideModal()">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <label for="nume">Nume:</label>
+          <input
+            type="text"
+            id="nume"
+            name="nume"
+            [(ngModel)]="persoanaNoua.nume"
+            required
+          />
+
+          <label for="prenume">Prenume:</label>
+          <input
+            type="text"
+            id="prenume"
+            name="prenume"
+            [(ngModel)]="persoanaNoua.prenume"
+            required
+          />
+
+          <label for="cnp">CNP:</label>
+          <input
+            type="text"
+            id="cnp"
+            name="cnp"
+            [(ngModel)]="persoanaNoua.cnp"
+            required
+          />
+
+          <button type="button" (click)="salveazaPersoana()">Salvează</button>
+          <button type="button" (click)="inchideModal()">Renunță</button>
+        </form>
+        <app-persoane-form
+          [persoana]="persoanaNoua"
+          (salvare)="salveazaPersoana()"
+        ></app-persoane-form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,23 +9,30 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { ToastrModule } from 'ngx-toastr';
-
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InformationComponent } from './components/information/information.component';
 import { InformationModalComponent } from './components/information/information-modal/information-modal.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+import { HttpClientModule } from '@angular/common/http';
 
+import { PersoaneFormComponent } from './components/persoane/persoane-form.component';
+import { PersoaneComponent } from './components/persoane/persoane.component'; 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     InformationComponent,
     InformationModalComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    PersoaneComponent,
+    PersoaneFormComponent,
   ],
   imports: [
+    HttpClientModule,
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

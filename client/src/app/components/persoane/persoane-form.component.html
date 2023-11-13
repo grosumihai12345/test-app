@@ -1,0 +1,14 @@
+<!-- persoane-form.component.html -->
+<div>
+  <label for="nume">Nume:</label>
+  <input id="nume" [(ngModel)]="persoana.nume" />
+
+  <label for="prenume">Prenume:</label>
+  <input id="prenume" [(ngModel)]="persoana.prenume" />
+
+  <label for="cnp">CNP:</label>
+  <input id="cnp" [(ngModel)]="persoana.cnp" />
+
+  <button (click)="salveaza()">Salvează</button>
+  <!-- <button (click)="anuleaza()">Anulează</button> -->
+</div>
